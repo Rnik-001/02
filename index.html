@@ -134,6 +134,14 @@
             width: 100%;
             padding: 0.5rem;
             font-size: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .tg-channel .btn:hover {
+            background: #f0f0f0;
         }
         
         .intro-text {
@@ -273,6 +281,7 @@
             font-weight: 500;
             padding: 0.3rem 0;
             font-size: 0.85rem;
+            cursor: pointer;
         }
         
         .tool-list a:hover {
@@ -375,6 +384,61 @@
             transform: translateY(-1px);
         }
         
+        /* 自定义弹窗样式 */
+        .custom-modal {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .custom-modal h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .custom-modal p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .custom-modal .modal-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .custom-modal .modal-buttons button {
+            flex: 1;
+            padding: 0.7rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .custom-modal .modal-buttons .copy-btn {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .custom-modal .modal-buttons .copy-btn:hover {
+            background: var(--accent-color);
+        }
+        
+        .custom-modal .modal-buttons .open-btn {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .custom-modal .modal-buttons .open-btn:hover {
+            background: #27ae60;
+        }
+        
         /* 桌面样式 */
         @media (min-width: 768px) {
             .container {
@@ -433,11 +497,11 @@
         <div class="tg-channel">
             <h3><i class="fab fa-telegram"></i> 官方频道</h3>
             <p>获取最新工具和更新</p>
-            <a href="https://t.me/iOSAWJ" target="_blank" class="btn">加入频道</a>
+            <button class="btn" onclick="window.open('https://t.me/iOSAWJ', '_blank')">加入频道</button>
         </div>
         
         <div class="intro-text">
-            <p>点击分类标题可展开查看具体工具，点击工具名称可访问下载页面</p>
+            <p>点击分类标题可展开查看具体工具，点击工具名称可查看详情</p>
         </div>
         
         <div class="search-box">
@@ -465,13 +529,13 @@
             
             <div class="section-content">
                 <ul class="tool-list">
-                    <li><a href="https://apps.apple.com/cn/app/outline-app/id1356177741">Outline <span class="price">免费</span></a></li>
-                    <li><a href="https://apps.apple.com/us/app/id1442620678?l=zh-cn">Surge iOS 5 <span class="price">$49.99</span></a></li>
-                    <li><a href="https://apps.apple.com/us/app/quantumult-x/id1443988620?l=zh-cn&platform=iphone">Quantumult X <span class="price">$7.99</span></a></li>
-                    <li><a href="https://apps.apple.com/us/app/shadowrocket/id932747118?l=zh-cn">Shadowrocket <span class="price">$2.99</span></a></li>
-                    <li><a href="https://apps.apple.com/us/app/loon/id1373567447?l=zh-cn">Loon <span class="price">$5.99</span></a></li>
-                    <li><a href="https://apps.apple.com/us/app/loon-lite/id6444029612?l=zh-cn">Loon Lite <span class="price">$0.99</span></a></li>
-                    <li><a href="https://apps.apple.com/us/app/stash-proxy-utility/id1596063349?l=zh-cn">Stash <span class="price">$3.99</span></a></li>
+                    <li><a href="#" data-url="https://apps.apple.com/cn/app/outline-app/id1356177741" data-name="Outline" data-price="免费" data-desc="由Google Jigsaw团队开发的轻量级代理客户端">Outline <span class="price">免费</span></a></li>
+                    <li><a href="#" data-url="https://apps.apple.com/us/app/id1442620678?l=zh-cn" data-name="Surge iOS 5" data-price="$49.99" data-desc="功能强大的网络调试工具和代理客户端">Surge iOS 5 <span class="price">$49.99</span></a></li>
+                    <li><a href="#" data-url="https://apps.apple.com/us/app/quantumult-x/id1443988620?l=zh-cn&platform=iphone" data-name="Quantumult X" data-price="$7.99" data-desc="强大的网络工具，支持多种代理协议">Quantumult X <span class="price">$7.99</span></a></li>
+                    <li><a href="#" data-url="https://apps.apple.com/us/app/shadowrocket/id932747118?l=zh-cn" data-name="Shadowrocket" data-price="$2.99" data-desc="基于规则的网络调试工具，支持SS/SSR/V2Ray">Shadowrocket <span class="price">$2.99</span></a></li>
+                    <li><a href="#" data-url="https://apps.apple.com/us/app/loon/id1373567447?l=zh-cn" data-name="Loon" data-price="$5.99" data-desc="功能强大的网络代理工具，支持多种协议">Loon <span class="price">$5.99</span></a></li>
+                    <li><a href="#" data-url="https://apps.apple.com/us/app/loon-lite/id6444029612?l=zh-cn" data-name="Loon Lite" data-price="$0.99" data-desc="Loon的精简版本，适合轻量使用">Loon Lite <span class="price">$0.99</span></a></li>
+                    <li><a href="#" data-url="https://apps.apple.com/us/app/stash-proxy-utility/id1596063349?l=zh-cn" data-name="Stash" data-price="$3.99" data-desc="基于规则的网络代理工具">Stash <span class="price">$3.99</span></a></li>
                 </ul>
             </div>
         </section>
@@ -490,14 +554,14 @@
             
             <div class="section-content">
                 <ul class="tool-list">
-                    <li><a href="https://github.com/getsurfboard/surfboard/releases">Surfboard <span class="protocol-tag">SS/VMess/Trojan</span></a></li>
-                    <li><a href="https://play.google.com/store/apps/details?id=com.getsurfboard">Surfboard Google Play</a></li>
-                    <li><a href="https://github.com/SagerNet/sing-box/releases">sing-box</a></li>
-                    <li><a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sagernet">SagerNet Google Play</a></li>
-                    <li><a href="https://github.com/MatsuriDayo/Matsuri/releases">Matsuri(茉莉)</a></li>
-                    <li><a href="https://github.com/XTLS/AnXray/releases">AnXray</a></li>
-                    <li><a href="https://github.com/2dust/v2rayNG/releases/tag/1.10.26">v2rayNG 1.10.26</a></li>
-                    <li><a href="https://github.com/shadowsocks/shadowsocks-android/releases">Shadowsocks 影梭</a></li>
+                    <li><a href="#" data-url="https://github.com/getsurfboard/surfboard/releases" data-name="Surfboard" data-desc="支持SS/VMess/Trojan协议的代理工具">Surfboard <span class="protocol-tag">SS/VMess/Trojan</span></a></li>
+                    <li><a href="#" data-url="https://play.google.com/store/apps/details?id=com.getsurfboard" data-name="Surfboard Google Play" data-desc="Google Play商店版本的Surfboard">Surfboard Google Play</a></li>
+                    <li><a href="#" data-url="https://github.com/SagerNet/sing-box/releases" data-name="sing-box" data-desc="新一代通用代理平台">sing-box</a></li>
+                    <li><a href="#" data-url="https://play.google.com/store/apps/details?id=io.nekohasekai.sagernet" data-name="SagerNet Google Play" data-desc="Google Play商店版本的SagerNet">SagerNet Google Play</a></li>
+                    <li><a href="#" data-url="https://github.com/MatsuriDayo/Matsuri/releases" data-name="Matsuri(茉莉)" data-desc="基于V2Ray核心的Android代理客户端">Matsuri(茉莉)</a></li>
+                    <li><a href="#" data-url="https://github.com/XTLS/AnXray/releases" data-name="AnXray" data-desc="基于Xray核心的Android代理客户端">AnXray</a></li>
+                    <li><a href="#" data-url="https://github.com/2dust/v2rayNG/releases/tag/1.10.26" data-name="v2rayNG 1.10.26" data-desc="基于V2Ray核心的Android代理客户端">v2rayNG 1.10.26</a></li>
+                    <li><a href="#" data-url="https://github.com/shadowsocks/shadowsocks-android/releases" data-name="Shadowsocks 影梭" data-desc="经典的Shadowsocks Android客户端">Shadowsocks 影梭</a></li>
                 </ul>
             </div>
         </section>
@@ -516,10 +580,10 @@
             
             <div class="section-content">
                 <ul class="tool-list">
-                    <li><a href="https://github.com/SagerNet/sing-box/releases/latest">Sing-Box索尼电视兼容版</a></li>
-                    <li><a href="https://t.me/feiyangdigital/529168">Clash索尼电视兼容版</a></li>
-                    <li><a href="https://github.com/2dust/v2rayNG/releases/download/1.7.16/v2rayNG_1.7.16.apk">v2rayNG索尼电视兼容版</a></li>
-                    <li><a href="https://github.com/shadowsocks/shadowsocks-android/releases">Shadowsocks TV版</a></li>
+                    <li><a href="#" data-url="https://github.com/SagerNet/sing-box/releases/latest" data-name="Sing-Box索尼电视兼容版" data-desc="专为索尼电视优化的Sing-Box版本">Sing-Box索尼电视兼容版</a></li>
+                    <li><a href="#" data-url="https://t.me/feiyangdigital/529168" data-name="Clash索尼电视兼容版" data-desc="专为索尼电视优化的Clash版本">Clash索尼电视兼容版</a></li>
+                    <li><a href="#" data-url="https://github.com/2dust/v2rayNG/releases/download/1.7.16/v2rayNG_1.7.16.apk" data-name="v2rayNG索尼电视兼容版" data-desc="专为索尼电视优化的v2rayNG版本">v2rayNG索尼电视兼容版</a></li>
+                    <li><a href="#" data-url="https://github.com/shadowsocks/shadowsocks-android/releases" data-name="Shadowsocks TV版" data-desc="专为电视优化的Shadowsocks客户端">Shadowsocks TV版</a></li>
                 </ul>
             </div>
         </section>
@@ -538,13 +602,13 @@
             
             <div class="section-content">
                 <ul class="tool-list">
-                    <li><a href="https://github.com/netchx/Netch/releases">Netch <span class="protocol-tag">SS/SSR/VMess</span></a></li>
-                    <li><a href="https://github.com/TheMRLL/winxray/releases">WinXray</a></li>
-                    <li><a href="https://github.com/MatsuriDayo/nekoray/releases">NekoRay</a></li>
-                    <li><a href="https://github.com/2dust/v2rayN/releases/tag/7.9.3">v2rayN 7.9.3</a></li>
-                    <li><a href="https://github.com/shadowsocks/shadowsocks-windows/releases">Shadowsocks</a></li>
-                    <li><a href="https://github.com/Fndroid/clash_for_windows_pkg/releases">Clash for Windows</a></li>
-                    <li><a href="https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases">Clash for Windows 汉化版</a></li>
+                    <li><a href="#" data-url="https://github.com/netchx/Netch/releases" data-name="Netch" data-desc="支持SS/SSR/VMess协议的Windows代理工具">Netch <span class="protocol-tag">SS/SSR/VMess</span></a></li>
+                    <li><a href="#" data-url="https://github.com/TheMRLL/winxray/releases" data-name="WinXray" data-desc="基于Xray核心的Windows代理客户端">WinXray</a></li>
+                    <li><a href="#" data-url="https://github.com/MatsuriDayo/nekoray/releases" data-name="NekoRay" data-desc="基于Qt的跨平台代理客户端">NekoRay</a></li>
+                    <li><a href="#" data-url="https://github.com/2dust/v2rayN/releases/tag/7.9.3" data-name="v2rayN 7.9.3" data-desc="基于V2Ray核心的Windows代理客户端">v2rayN 7.9.3</a></li>
+                    <li><a href="#" data-url="https://github.com/shadowsocks/shadowsocks-windows/releases" data-name="Shadowsocks" data-desc="经典的Shadowsocks Windows客户端">Shadowsocks</a></li>
+                    <li><a href="#" data-url="https://github.com/Fndroid/clash_for_windows_pkg/releases" data-name="Clash for Windows" data-desc="Windows平台的Clash图形客户端">Clash for Windows</a></li>
+                    <li><a href="#" data-url="https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases" data-name="Clash for Windows 汉化版" data-desc="Clash for Windows的中文汉化版本">Clash for Windows 汉化版</a></li>
                 </ul>
             </div>
         </section>
@@ -563,13 +627,13 @@
             
             <div class="section-content">
                 <ul class="tool-list">
-                    <li><a href="https://nssurge.com/buy_now">Surge Mac 5 <span class="price">$49.99+</span></a></li>
-                    <li><a href="https://apps.apple.com/us/app/quantumult-x/id1443988620?l=zh-cn&platform=mac">Quantumult X <span class="price">$7.99</span></a></li>
-                    <li><a href="https://stash.ws/macos/pricing/">Stash for macOS</a></li>
-                    <li><a href="https://github.com/Cenmrev/V2RayX/releases">V2RayX</a></li>
-                    <li><a href="https://github.com/yanue/V2rayU/releases">V2rayU</a></li>
-                    <li><a href="https://github.com/yichengchen/clashX/releases">ClashX</a></li>
-                    <li><a href="https://github.com/Fndroid/clash_for_windows_pkg/releases">Clash for Windows</a></li>
+                    <li><a href="#" data-url="https://nssurge.com/buy_now" data-name="Surge Mac 5" data-price="$49.99+" data-desc="macOS平台的网络调试工具和代理客户端">Surge Mac 5 <span class="price">$49.99+</span></a></li>
+                    <li><a href="#" data-url="https://apps.apple.com/us/app/quantumult-x/id1443988620?l=zh-cn&platform=mac" data-name="Quantumult X" data-price="$7.99" data-desc="macOS平台的网络工具，支持多种代理协议">Quantumult X <span class="price">$7.99</span></a></li>
+                    <li><a href="#" data-url="https://stash.ws/macos/pricing/" data-name="Stash for macOS" data-desc="macOS平台的基于规则的网络代理工具">Stash for macOS</a></li>
+                    <li><a href="#" data-url="https://github.com/Cenmrev/V2RayX/releases" data-name="V2RayX" data-desc="基于V2Ray核心的macOS代理客户端">V2RayX</a></li>
+                    <li><a href="#" data-url="https://github.com/yanue/V2rayU/releases" data-name="V2rayU" data-desc="基于V2Ray核心的macOS图形客户端">V2rayU</a></li>
+                    <li><a href="#" data-url="https://github.com/yichengchen/clashX/releases" data-name="ClashX" data-desc="macOS平台的Clash图形客户端">ClashX</a></li>
+                    <li><a href="#" data-url="https://github.com/Fndroid/clash_for_windows_pkg/releases" data-name="Clash for Windows" data-desc="macOS平台也可使用的Clash for Windows">Clash for Windows</a></li>
                 </ul>
             </div>
         </section>
@@ -588,11 +652,11 @@
             
             <div class="section-content">
                 <ul class="tool-list">
-                    <li><a href="https://github.com/Qv2ray/Qv2ray/releases">Qv2ray</a></li>
-                    <li><a href="https://github.com/shadowsocks/shadowsocks-qt5/releases">Shadowsocks-Qt5</a></li>
-                    <li><a href="https://github.com/shadowsocks/shadowsocks-libev">Shadowsocks-libev</a></li>
-                    <li><a href="https://github.com/trojan-gfw/trojan">Trojan</a></li>
-                    <li><a href="https://github.com/v2ray/v2ray-core">V2Ray Core</a></li>
+                    <li><a href="#" data-url="https://github.com/Qv2ray/Qv2ray/releases" data-name="Qv2ray" data-desc="基于Qt的跨平台V2Ray客户端">Qv2ray</a></li>
+                    <li><a href="#" data-url="https://github.com/shadowsocks/shadowsocks-qt5/releases" data-name="Shadowsocks-Qt5" data-desc="基于Qt5的Shadowsocks客户端">Shadowsocks-Qt5</a></li>
+                    <li><a href="#" data-url="https://github.com/shadowsocks/shadowsocks-libev" data-name="Shadowsocks-libev" data-desc="轻量级Shadowsocks C语言实现">Shadowsocks-libev</a></li>
+                    <li><a href="#" data-url="https://github.com/trojan-gfw/trojan" data-name="Trojan" data-desc="基于TLS的代理工具">Trojan</a></li>
+                    <li><a href="#" data-url="https://github.com/v2ray/v2ray-core" data-name="V2Ray Core" data-desc="V2Ray核心程序">V2Ray Core</a></li>
                 </ul>
             </div>
         </section>
@@ -611,19 +675,19 @@
             
             <div class="section-content">
                 <ul class="tool-list">
-                    <li><a href="https://github.com/AUK9527/Are-u-ok">iStore-OS插件仓库</a></li>
-                    <li><a href="https://koolclash.js.org">Koolshare OpenWrt/LED</a></li>
-                    <li><a href="https://github.com/hq450/fancyss">fancyss</a></li>
-                    <li><a href="https://github.com/shadowsocks/openwrt-shadowsocks">OpenWRT-Shadowsocks</a></li>
-                    <li><a href="https://www.right.com.cn/forum/thread-161324-1-1.html">Padavan</a></li>
-                    <li><a href="https://github.com/FelisCatus/SwitchyOmega/releases">SwitchyOmega <span class="protocol-tag">浏览器代理</span></a></li>
-                    <li><a href="https://github.com/bitbeans/SimpleDnsCrypt/releases">Simple DNSCrypt</a></li>
-                    <li><a href="https://github.com/klzgrad/naiveproxy/releases">NaiveProxy</a></li>
-                    <li><a href="https://github.com/eycorsican/leaf">Leaf</a></li>
-                    <li><a href="https://github.com/EAimTY/tuic">TUIC</a></li>
-                    <li><a href="https://github.com/Dreamacro/clash/releases">Clash 内核</a></li>
-                    <li><a href="https://github.com/Dreamacro/clash/releases/tag/premium">Clash Premium 内核</a></li>
-                    <li><a href="https://github.com/v2ray/v2ray-core/releases">V2Ray 核心</a></li>
+                    <li><a href="#" data-url="https://github.com/AUK9527/Are-u-ok" data-name="iStore-OS插件仓库" data-desc="iStore-OS系统的插件仓库">iStore-OS插件仓库</a></li>
+                    <li><a href="#" data-url="https://koolclash.js.org" data-name="Koolshare OpenWrt/LED" data-desc="Koolshare OpenWrt/LED系统的Clash插件">Koolshare OpenWrt/LED</a></li>
+                    <li><a href="#" data-url="https://github.com/hq450/fancyss" data-name="fancyss" data-desc="专为梅林固件开发的代理工具">fancyss</a></li>
+                    <li><a href="#" data-url="https://github.com/shadowsocks/openwrt-shadowsocks" data-name="OpenWRT-Shadowsocks" data-desc="OpenWRT系统的Shadowsocks客户端">OpenWRT-Shadowsocks</a></li>
+                    <li><a href="#" data-url="https://www.right.com.cn/forum/thread-161324-1-1.html" data-name="Padavan" data-desc="Padavan固件的代理工具">Padavan</a></li>
+                    <li><a href="#" data-url="https://github.com/FelisCatus/SwitchyOmega/releases" data-name="SwitchyOmega" data-desc="浏览器代理管理扩展">SwitchyOmega <span class="protocol-tag">浏览器代理</span></a></li>
+                    <li><a href="#" data-url="https://github.com/bitbeans/SimpleDnsCrypt/releases" data-name="Simple DNSCrypt" data-desc="简单的DNSCrypt客户端">Simple DNSCrypt</a></li>
+                    <li><a href="#" data-url="https://github.com/klzgrad/naiveproxy/releases" data-name="NaiveProxy" data-desc="基于Chrome网络栈的代理工具">NaiveProxy</a></li>
+                    <li><a href="#" data-url="https://github.com/eycorsican/leaf" data-name="Leaf" data-desc="轻量级、快速的网络代理框架">Leaf</a></li>
+                    <li><a href="#" data-url="https://github.com/EAimTY/tuic" data-name="TUIC" data-desc="基于QUIC的代理协议">TUIC</a></li>
+                    <li><a href="#" data-url="https://github.com/Dreamacro/clash/releases" data-name="Clash 内核" data-desc="Clash核心程序">Clash 内核</a></li>
+                    <li><a href="#" data-url="https://github.com/Dreamacro/clash/releases/tag/premium" data-name="Clash Premium 内核" data-desc="Clash高级版核心程序">Clash Premium 内核</a></li>
+                    <li><a href="#" data-url="https://github.com/v2ray/v2ray-core/releases" data-name="V2Ray 核心" data-desc="V2Ray核心程序">V2Ray 核心</a></li>
                 </ul>
             </div>
         </section>
@@ -642,9 +706,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // 存储原始工具名称，用于搜索后恢复
-            const originalToolNames = {};
-            
             // 折叠功能
             const sectionHeaders = document.querySelectorAll('.section-header');
             
@@ -672,68 +733,59 @@
             // 搜索功能
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
-            const toolLists = document.querySelectorAll('.tool-list');
-            
-            // 存储所有工具数据
-            const toolsData = [];
-            toolLists.forEach(list => {
-                const items = list.querySelectorAll('li');
-                
-                items.forEach(item => {
-                    const link = item.querySelector('a');
-                    const name = link.textContent;
-                    const url = link.href;
-                    
-                    // 保存原始文本内容
-                    originalToolNames[url] = name;
-                    
-                    toolsData.push({
-                        name: name,
-                        url: url,
-                        element: item
-                    });
-                });
-            });
             
             // 搜索功能实现
             searchInput.addEventListener('input', function() {
                 const searchTerm = this.value.toLowerCase().trim();
                 let resultsCount = 0;
                 
+                // 遍历所有工具链接
+                const allLinks = document.querySelectorAll('.tool-list a');
+                
                 if (searchTerm.length === 0) {
                     // 显示所有项目
-                    toolsData.forEach(tool => {
-                        tool.element.style.display = '';
-                        const link = tool.element.querySelector('a');
-                        link.innerHTML = originalToolNames[tool.url]; // 恢复原始名称
+                    allLinks.forEach(link => {
+                        const li = link.closest('li');
+                        li.style.display = '';
+                        
+                        // 移除高亮
+                        const toolName = link.getAttribute('data-name');
+                        const price = link.querySelector('.price') ? link.querySelector('.price').outerHTML : '';
+                        const protocolTag = link.querySelector('.protocol-tag') ? link.querySelector('.protocol-tag').outerHTML : '';
+                        
+                        link.innerHTML = `${toolName} ${price} ${protocolTag}`;
                     });
+                    
                     searchResults.textContent = '';
                     return;
                 }
                 
                 // 搜索匹配的工具
-                toolsData.forEach(tool => {
-                    const toolName = tool.name.toLowerCase();
+                allLinks.forEach(link => {
+                    const toolName = link.getAttribute('data-name').toLowerCase();
+                    const li = link.closest('li');
+                    const section = li.closest('.section');
                     
                     if (toolName.includes(searchTerm)) {
                         // 显示包含匹配项的section
-                        const section = tool.element.closest('.section');
                         section.classList.remove('collapsed');
                         
                         // 高亮匹配的文本
-                        const link = tool.element.querySelector('a');
-                        const originalText = originalToolNames[tool.url];
+                        const originalName = link.getAttribute('data-name');
+                        const price = link.querySelector('.price') ? link.querySelector('.price').outerHTML : '';
+                        const protocolTag = link.querySelector('.protocol-tag') ? link.querySelector('.protocol-tag').outerHTML : '';
                         
-                        // 添加新的高亮
                         const regex = new RegExp(`(${searchTerm})`, 'gi');
-                        link.innerHTML = originalText.replace(regex, '<span class="highlight">$1</span>');
+                        const highlightedName = originalName.replace(regex, '<span class="highlight">$1</span>');
+                        
+                        link.innerHTML = `${highlightedName} ${price} ${protocolTag}`;
                         
                         // 显示匹配的项目
-                        tool.element.style.display = '';
+                        li.style.display = '';
                         resultsCount++;
                     } else {
                         // 隐藏不匹配的项目
-                        tool.element.style.display = 'none';
+                        li.style.display = 'none';
                     }
                 });
                 
@@ -745,15 +797,86 @@
                 }
             });
             
-            // 页面加载后显示TG频道提示
-            setTimeout(() => {
+            // 工具链接点击事件 - 弹出模态框
+            document.querySelectorAll('.tool-list a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const toolName = this.getAttribute('data-name');
+                    const toolUrl = this.getAttribute('data-url');
+                    const toolPrice = this.getAttribute('data-price') || '免费';
+                    const toolDesc = this.getAttribute('data-desc') || '一款优秀的代理工具';
+                    
+                    // 创建模态框内容
+                    const modalContent = `
+                        <div class="custom-modal">
+                            <h3>${toolName}</h3>
+                            <p><strong>价格:</strong> ${toolPrice}</p>
+                            <p><strong>描述:</strong> ${toolDesc}</p>
+                            <p><strong>链接:</strong> <span style="word-break: break-all;">${toolUrl}</span></p>
+                            <div class="modal-buttons">
+                                <button class="copy-btn" data-url="${toolUrl}">复制链接</button>
+                                <button class="open-btn" data-url="${toolUrl}">直接打开</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // 显示模态框
+                    Swal.fire({
+                        html: modalContent,
+                        showCloseButton: true,
+                        showConfirmButton: false,
+                        width: window.innerWidth > 768 ? 500 : '90%',
+                        background: 'transparent',
+                        didOpen: () => {
+                            // 添加复制链接功能
+                            document.querySelector('.copy-btn').addEventListener('click', function() {
+                                const url = this.getAttribute('data-url');
+                                navigator.clipboard.writeText(url).then(() => {
+                                    Swal.fire({
+                                        title: '复制成功!',
+                                        text: '链接已复制到剪贴板',
+                                        icon: 'success',
+                                        timer: 1500,
+                                        showConfirmButton: false
+                                    });
+                                });
+                            });
+                            
+                            // 添加直接打开功能
+                            document.querySelector('.open-btn').addEventListener('click', function() {
+                                const url = this.getAttribute('data-url');
+                                window.open(url, '_blank');
+                                Swal.close();
+                            });
+                        }
+                    });
+                });
+            });
+            
+            // 检查是否应该显示TG频道弹窗
+            function shouldShowTgPopup() {
+                const lastPopupTime = localStorage.getItem('lastTgPopupTime');
+                if (!lastPopupTime) {
+                    return true; // 从未显示过，需要显示
+                }
+                
+                const currentTime = new Date().getTime();
+                const oneHourInMs = 60 * 60 * 1000; // 1小时的毫秒数
+                
+                // 如果距离上次显示已经超过1小时，则显示弹窗
+                return (currentTime - parseInt(lastPopupTime)) > oneHourInMs;
+            }
+            
+            // 显示TG频道弹窗
+            function showTgPopup() {
                 Swal.fire({
                     title: '加入官方TG频道',
                     html: `
                     <div style="text-align:center;padding:0.8rem">
                         <h3 style="margin-bottom:0.8rem;color:#2c3e50">@iOSAWJ</h3>
                         <p style="margin-bottom:1rem">获取最新工具和更新</p>
-                        <a href="https://t.me/iOSAWJ" target="_blank" style="display:inline-block;background:#0088cc;color:white;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;font-size:0.8rem">立即加入</a>
+                        <button onclick="window.open('https://t.me/iOSAWJ', '_blank')" style="display:inline-block;background:#0088cc;color:white;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;font-size:0.8rem;border:none;cursor:pointer">立即加入</button>
                     </div>
                     `,
                     showCloseButton: true,
@@ -761,6 +884,16 @@
                     background: '#f8f9fa',
                     width: window.innerWidth > 768 ? 400 : '90%',
                 });
+                
+                // 更新最后显示时间
+                localStorage.setItem('lastTgPopupTime', new Date().getTime().toString());
+            }
+            
+            // 页面加载后检查是否需要显示TG频道提示
+            setTimeout(() => {
+                if (shouldShowTgPopup()) {
+                    showTgPopup();
+                }
             }, 1000);
         });
     </script>
